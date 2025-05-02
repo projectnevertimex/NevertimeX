@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #1a1a2e;
+    color: #e0e0e0;
+    line-height: 1.6;
+    opacity: 0;
+    animation: fadeInBody 1.2s ease-in forwards;
+}
+
+@keyframes fadeInBody {
+    to { opacity: 1; }
+}
+
+.background-container {
+    max-width: 960px;
+    margin: 1rem auto;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.accordion-item {
+    background: #2a2a3e;
+    border-radius: 16px; /* Увеличено для большего закругления, как на скриншоте */
+    margin-bottom: 1rem;
+    overflow: hidden;
+    transform: translateY(20px);
+    opacity: 0;
+    animation: slideInCard 0.6s ease-out var(--delay) forwards;
+}
+
+@keyframes slideInCard {
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.accordion-header {
+    background: none;
+    border: none;
+    width: 100%;
+    padding: 1rem; /* Уменьшено для компактности */
+    font-size: 1.1rem; /* Уменьшено, как на скриншоте */
+    color: #f0f0f0; /* Более светлый текст */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.accordion-header i {
+    font-size: 1rem; /* Уменьшено, как на скриншоте */
+    transition: transform 0.3s ease;
+}
+
+.accordion-header:hover {
+    background: #3b3b5e;
+    transform: translateY(-2px);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 1.5rem;
+    transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+}
+
+.accordion-content.active {
+    padding: 1.5rem;
+    overflow: auto; /* Добавлено, чтобы текст не обрезался */
+}
+
+.accordion-content p {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInText 0.6s ease-out 0.2s forwards;
+    text-align: center; /* Центрирование текста, как на скриншоте */
+    font-size: 0.95rem; /* Уменьшено, как на скриншоте */
+    color: #d0d0d0; /* Более светлый текст */
+}
+
+@keyframes fadeInText {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.gradient-btn {
+    display: inline-block;
+    margin: 3.5rem 0 2rem 0;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, scale 0.3s ease;
+}
+
+.gradient-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.5);
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    background: #2a2a3e;
+    color: #a0a0a0;
+    margin-top: 2rem;
+}
+
+footer a {
+    color: #3b82f6;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .accordion-header {
+        font-size: 1rem;
+    }
+
+    .accordion-content.active {
+        padding: 1rem;
+    }
+
+    .background-container {
+        padding: 1rem;
+        border-radius: 16px;
+    }
+
+    .gradient-btn {
+        margin: 2.5rem 0 1.5rem 0;
+    }
+}
